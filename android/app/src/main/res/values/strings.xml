@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CountUp</string>
+    <string name="title_activity_main">CountUp</string>
+    <string name="package_name">com.test.countup</string>
+    <string name="custom_url_scheme">com.test.countup</string>
+</resources>
