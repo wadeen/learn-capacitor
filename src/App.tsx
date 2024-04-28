@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import { Browser } from "@capacitor/browser";
+import { Network } from "@capacitor/network";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    Network.addListener("networkStatusChange", (status) => {
+      if (status.connected) return;
+      alert("ネットワークに接続されていません！！");
+    });
+  }, []);
 
   return (
     <>
@@ -17,6 +26,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <button onClick={() => Browser.open({ url: "https://capacitorjs.com/" })}>Go To Capacitor docs</button>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
         <p>
